@@ -1,0 +1,41 @@
+#1 japan by cities
+
+select NAME from CITY where COUNTRYCODE='JPN';
+
+#2 weather observation station
+select CITY,STATE from STATION;
+
+#3 weather observation station 3
+SELECT DISTINCT City
+FROM Station
+WHERE MOD(Id,2) = 0
+ORDER BY City;
+
+#4 weather observation station 4
+SELECT (COUNT(CITY) - COUNT(DISTINCT CITY)) FROM STATION;
+
+
+#5 weather observation station 5
+select city,length_city from (select a.*, rownum r from (select length(city) length_city,city from station order by length_city, city) a) where r in (1,(select count(*) from station));
+
+#6 weather observation station 6
+select CITY from STATION where CITY like 'A%' or CITY like 'E%' or CITY like 'I%' or CITY like 'O%' or CITY like 'U%';
+
+#7 weather observation station 7
+select distinct CITY from STATION where CITY like '%a' or CITY like '%e' or CITY like '%i' or CITY like '%o' or CITY like '%u';
+
+#8 weather observation station 8
+select CITY from STATION
+where (CITY like 'A%' or CITY like 'O%' or CITY like 'E%' or CITY like 'U%' or CITY like 'I%')
+and (CITY like '%a' or CITY like '%o' or CITY like '%e' or CITY like '%u' or CITY like '%i')
+order by CITY;
+#9 weather observation 9
+select distinct city from station 
+where city not like 'A%' and
+city not like 'E%' and
+ city not like 'I%'
+and
+ city not like 'O%'
+and
+ city not like 'U%'
+order by city;
